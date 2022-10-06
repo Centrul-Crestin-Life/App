@@ -7,9 +7,10 @@ import { RootTabScreenProps } from '../types';
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <Text style={styles.title}>Hello, thismeet you!!!</Text>
+      <View style={styles.separator} lightColor="#eee" darkColor="rgba(125,255,255,0.1)" />
       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <EditScreenInfo path="This is a test" />
     </View>
   );
 }
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 20,
+    fontSize: 60,
     fontWeight: 'bold',
   },
   separator: {
