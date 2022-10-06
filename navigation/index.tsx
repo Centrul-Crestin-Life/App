@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -14,6 +14,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/General/HomeScreen';
 import CalendarScreen from '../screens/General/CalendarScreen';
+import AnnouncementScreen from '../screens/Tineret/AnnouncementScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { GeneralStackParamList, GeneralTabParamList, GeneralTabScreenProps } from '../types';
@@ -67,18 +68,7 @@ function BottomTabNavigator() {
         component={HomeScreen}
         options={({ navigation }: GeneralTabScreenProps<'Home'>) => ({
           headerLeft: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome5
-                name="bars"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginLeft: 15 }}
-              />
-            </Pressable>
+            MenuBar(navigation, colorScheme)
           ),
           tabBarIcon: ({ color }) => <TabBarIcon name="church" color={color} />,
         })}
@@ -103,4 +93,19 @@ function TabBarIcon(props: {
   color: string;
 }) {
   return <FontAwesome5 size={30} style={{ marginBottom: -3 }} {...props} />;
+}
+
+function MenuBar(navigation: any, colorScheme: NonNullable<ColorSchemeName>){
+  return <Pressable
+    onPress={() => navigation.navigate('Modal')}
+    style={({ pressed }) => ({
+      opacity: pressed ? 0.5 : 1,
+    })}>
+    <FontAwesome5
+      name="bars"
+      size={25}
+      color={Colors[colorScheme].text}
+      style={{ marginLeft: 15 }}
+    />
+  </Pressable>
 }
