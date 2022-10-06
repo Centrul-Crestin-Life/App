@@ -9,27 +9,48 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface GeneralParamList extends GeneralStackParamList {}
+    interface TineretParamList extends TineretStackParamList {}
   }
 }
 
-export type RootStackParamList = {
-  Root: NavigatorScreenParams<RootTabParamList> | undefined;
+export type GeneralStackParamList = {
+  Root: NavigatorScreenParams<GeneralTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
 };
 
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
-  RootStackParamList,
+export type TineretStackParamList = {
+  Root: NavigatorScreenParams<GeneralTabParamList> | undefined;
+  Modal: undefined;
+  NotFound: undefined;
+};
+
+export type GeneralStackScreenProps<Screen extends keyof GeneralStackParamList> = NativeStackScreenProps<
+  GeneralStackParamList,
   Screen
 >;
 
-export type RootTabParamList = {
+export type TineretStackScreenProps<Screen extends keyof GeneralStackParamList> = NativeStackScreenProps<
+  GeneralStackParamList,
+  Screen
+>;
+
+export type GeneralTabParamList = {
   Home: undefined;
   Calendar: undefined;
 };
 
-export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
-  BottomTabScreenProps<RootTabParamList, Screen>,
-  NativeStackScreenProps<RootStackParamList>
+export type TineretTabParamList = {
+  Announcement: undefined;
+};
+
+export type GeneralTabScreenProps<Screen extends keyof GeneralTabParamList> = CompositeScreenProps<
+  BottomTabScreenProps<GeneralTabParamList, Screen>,
+  NativeStackScreenProps<GeneralStackParamList>
+>;
+
+export type TineretTabScreenProps<Screen extends keyof TineretTabParamList> = CompositeScreenProps<
+  BottomTabScreenProps<TineretTabParamList, Screen>,
+  NativeStackScreenProps<TineretStackParamList>
 >;

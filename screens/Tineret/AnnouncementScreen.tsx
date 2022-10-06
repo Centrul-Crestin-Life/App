@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native'
 import { Text, View } from '../../components/Themed';
-import { GeneralTabScreenProps } from '../../types';
+import { TineretTabScreenProps } from '../../types';
 
-export default function HomeScreen({ navigation }: GeneralTabScreenProps<'Home'>) {
+export default function AnnouncementScreen({ navigation }: TineretTabScreenProps<'Announcement'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Hi, this is your Home screen.</Text>
+      <Text style={styles.title}>Hi, those are your Announcements.</Text>
     </View>
   );
 }

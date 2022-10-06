@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native'
 import { Text, View } from '../../components/Themed';
-import { RootTabScreenProps } from '../../types';
+import { GeneralTabScreenProps } from '../../types';
 
-export default function CalendarScreen({ navigation }: RootTabScreenProps<'Calendar'>) {
+export default function CalendarScreen({ navigation }: GeneralTabScreenProps<'Calendar'>) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Hi, this is your Calendar.</Text>
