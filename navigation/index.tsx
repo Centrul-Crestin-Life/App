@@ -9,8 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
-
+import { ColorSchemeName, Pressable, View, Text, Button } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/General/HomeScreen';
@@ -18,15 +17,22 @@ import CalendarScreen from '../screens/General/CalendarScreen';
 import AnnouncementScreen from '../screens/Tineret/AnnouncementScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { GeneralStackParamList, GeneralTabParamList, GeneralTabScreenProps } from '../types';
+import { GeneralStackParamList, GeneralTabParamList, GeneralTabScreenProps, TineretStackParamList, TineretTabParamList, TineretTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
+import { color } from 'react-native-reanimated';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
     <NavigationContainer
       //linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <GeneralNavigator />
+      <MyDrawer />
     </NavigationContainer>
   );
 }
@@ -40,7 +46,7 @@ const Stack = createNativeStackNavigator<GeneralStackParamList>();
 function GeneralNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="Root" component={BottomTabNavigatorGeneral} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
@@ -53,28 +59,25 @@ function GeneralNavigator() {
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
-const BottomTab = createBottomTabNavigator<GeneralTabParamList>();
+const BottomTabGeneral = createBottomTabNavigator<GeneralTabParamList>();
 
-function BottomTabNavigator() {
+function BottomTabNavigatorGeneral() {
   const colorScheme = useColorScheme();
 
   return (
-    <BottomTab.Navigator
+    <BottomTabGeneral.Navigator
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
-      <BottomTab.Screen
+      <BottomTabGeneral.Screen
         name="Home"
         component={HomeScreen}
         options={({ navigation }: GeneralTabScreenProps<'Home'>) => ({
-          headerLeft: () => (
-            MenuBar(navigation, colorScheme)
-          ),
           tabBarIcon: ({ color }) => <TabBarIcon name="church" color={color} />,
         })}
       />
-      <BottomTab.Screen
+      <BottomTabGeneral.Screen
         name="Calendar"
         component={CalendarScreen}
         options={{
@@ -82,7 +85,29 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="calendar-alt" color={color} />,
         }}
       />
-    </BottomTab.Navigator>
+    </BottomTabGeneral.Navigator>
+  );
+}
+
+const BottomTabTineret = createBottomTabNavigator<TineretTabParamList>();
+
+function BottomTabNavigatorTineret() {
+  const colorScheme = useColorScheme();
+
+  return (
+    <BottomTabTineret.Navigator
+      initialRouteName="Announcement"
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme].tint,
+      }}>
+      <BottomTabTineret.Screen
+        name="Announcement"
+        component={AnnouncementScreen}
+        options={({ navigation }: TineretTabScreenProps<'Announcement'>) => ({
+          tabBarIcon: ({ color }) => <TabBarIcon name="church" color={color} />,
+        })}
+      />
+    </BottomTabTineret.Navigator>
   );
 }
 
@@ -109,4 +134,27 @@ function MenuBar(navigation: any, colorScheme: NonNullable<ColorSchemeName>){
       style={{ marginLeft: 15 }}
     />
   </Pressable>
+}
+
+function CustomDrawerContent(props: any) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+    </DrawerContentScrollView>
+
+  );
+}
+
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator
+      useLegacyImplementation
+      drawerContent={(props) => <CustomDrawerContent {...props} /> } >
+        
+      <Drawer.Screen name="General" component={BottomTabNavigatorGeneral} />
+      <Drawer.Screen name="Tineret" component={BottomTabNavigatorTineret} />
+    </Drawer.Navigator>
+  );
 }
