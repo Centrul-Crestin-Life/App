@@ -5,6 +5,7 @@ import useColorScheme from '../../hooks/useColorScheme';
 import TabBarIcon from '../../hooks/useTabBarIcon';
 import HomeScreen from '../../screens/General/HomeScreen';
 import CalendarScreen from '../../screens/General/CalendarScreen';
+import MediaScreen from '../../screens/General/MediaScreen';
 import { GeneralStackParamList, GeneralTabParamList, GeneralTabScreenProps } from '../../types';
 
 
@@ -36,6 +37,14 @@ import { GeneralStackParamList, GeneralTabParamList, GeneralTabScreenProps } fro
          options={{
            title: 'Calendar',
            tabBarIcon: ({ color }) => <TabBarIcon name="calendar-alt" color={color} />,
+         }}
+       />
+       <BottomTabGeneral.Screen
+         name="Media"
+         component={MediaScreen}
+         options={{
+           title: 'Media',
+           tabBarIcon: ({ color }) => <TabBarIcon name="play-circle" color={color} />,
          }}
        />
      </BottomTabGeneral.Navigator>
