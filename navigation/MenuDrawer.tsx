@@ -33,13 +33,14 @@ export default function MenuDrawer() {
           style={({ pressed }) => ({
             opacity: pressed ? 0.5 : 1,
           })}>
-        <FontAwesome5
-          name="bars"
-          size={25}
-          color={Colors[colorScheme].text}
-          style={{ marginLeft: 15 }}
-        />
-        </Pressable>
+          <FontAwesome5
+            name="bars"
+            size={25}
+            color={Colors[colorScheme].text}
+            style={{ marginLeft: 15 }}
+          />
+        </Pressable>,
+        headerTitleAlign: 'center'
       })}
       useLegacyImplementation
       drawerContent={(props) => <CustomDrawerContent {...props} /> } >

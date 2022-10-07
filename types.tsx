@@ -39,6 +39,7 @@ export type TineretStackScreenProps<Screen extends keyof GeneralStackParamList> 
 export type GeneralTabParamList = {
   Home: undefined;
   Calendar: undefined;
+  Media: undefined;
 };
 
 export type TineretTabParamList = {

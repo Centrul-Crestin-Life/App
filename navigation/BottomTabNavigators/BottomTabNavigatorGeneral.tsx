@@ -27,15 +27,18 @@ import { GeneralStackParamList, GeneralTabParamList, GeneralTabScreenProps } fro
        <BottomTabGeneral.Screen
          name="Home"
          component={HomeScreen}
-         options={({ navigation }: GeneralTabScreenProps<'Home'>) => ({
-           tabBarIcon: ({ color }) => <TabBarIcon name="church" color={color} />,
-         })}
+         options={{
+          title: 'Home',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <TabBarIcon name="church" color={color} />,
+        }}
        />
        <BottomTabGeneral.Screen
          name="Calendar"
          component={CalendarScreen}
          options={{
            title: 'Calendar',
+           headerShown: false,
            tabBarIcon: ({ color }) => <TabBarIcon name="calendar-alt" color={color} />,
          }}
        />
@@ -44,6 +47,7 @@ import { GeneralStackParamList, GeneralTabParamList, GeneralTabScreenProps } fro
          component={MediaScreen}
          options={{
            title: 'Media',
+           headerShown: false,
            tabBarIcon: ({ color }) => <TabBarIcon name="play-circle" color={color} />,
          }}
        />

@@ -25,9 +25,11 @@ import { GeneralStackParamList, TineretTabParamList, TineretTabScreenProps } fro
        <BottomTabTineret.Screen
          name="Announcement"
          component={AnnouncementScreen}
-         options={({ navigation }: TineretTabScreenProps<'Announcement'>) => ({
-           tabBarIcon: ({ color }) => <TabBarIcon name="church" color={color} />,
-         })}
+         options={{
+          title: 'Announcements',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <TabBarIcon name="bullhorn" color={color} />,
+        }}
        />
      </BottomTabTineret.Navigator>
    );
