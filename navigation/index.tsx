@@ -100,21 +100,6 @@ function TabBarIcon(props: {
   return <FontAwesome5 size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
-function MenuBar(navigation: any, colorScheme: NonNullable<ColorSchemeName>){
-  return <Pressable
-    onPress={() => navigation.navigate('Modal')}
-    style={({ pressed }) => ({
-      opacity: pressed ? 0.5 : 1,
-    })}>
-    <FontAwesome5
-      name="bars"
-      size={25}
-      color={Colors[colorScheme].text}
-      style={{ marginLeft: 15 }}
-    />
-  </Pressable>
-}
-
 function CustomDrawerContent(props: any) {
   return (
     <DrawerContentScrollView {...props}>
@@ -127,10 +112,27 @@ function CustomDrawerContent(props: any) {
 const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
+  const colorScheme = useColorScheme();
+
   return (
     <Drawer.Navigator
+      screenOptions={({ navigation }) => ({
+        headerLeft: () => <Pressable
+          onPress={() => navigation.openDrawer()}
+          style={({ pressed }) => ({
+            opacity: pressed ? 0.5 : 1,
+          })}>
+        <FontAwesome5
+          name="bars"
+          size={25}
+          color={Colors[colorScheme].text}
+          style={{ marginLeft: 15 }}
+        />
+        </Pressable>
+      })}
       useLegacyImplementation
       drawerContent={(props) => <CustomDrawerContent {...props} /> } >
+      
         
       <Drawer.Screen name="General" component={BottomTabNavigatorGeneral} />
       <Drawer.Screen name="Tineret" component={BottomTabNavigatorTineret} />
