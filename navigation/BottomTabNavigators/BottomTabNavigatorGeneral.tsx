@@ -15,42 +15,42 @@ import { GeneralStackParamList, GeneralTabParamList, GeneralTabScreenProps } fro
  */
  const BottomTabGeneral = createBottomTabNavigator<GeneralTabParamList>();
 
- export default function BottomTabNavigatorGeneral() {
-   const colorScheme = useColorScheme();
+export default function BottomTabNavigatorGeneral() {
+  const colorScheme = useColorScheme();
  
-   return (
-     <BottomTabGeneral.Navigator
-       initialRouteName="Home"
-       screenOptions={{
-         tabBarActiveTintColor: Colors[colorScheme].tint,
-       }}>
-       <BottomTabGeneral.Screen
-         name="Home"
-         component={HomeScreen}
-         options={{
+  return (
+    <BottomTabGeneral.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme].tint,
+      }}>
+      <BottomTabGeneral.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
           title: 'Home',
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="church" color={color} />,
         }}
-       />
-       <BottomTabGeneral.Screen
-         name="Calendar"
-         component={CalendarScreen}
-         options={{
-           title: 'Calendar',
-           headerShown: false,
-           tabBarIcon: ({ color }) => <TabBarIcon name="calendar-alt" color={color} />,
-         }}
-       />
-       <BottomTabGeneral.Screen
-         name="Media"
-         component={MediaScreen}
-         options={{
-           title: 'Media',
-           headerShown: false,
-           tabBarIcon: ({ color }) => <TabBarIcon name="play-circle" color={color} />,
-         }}
-       />
-     </BottomTabGeneral.Navigator>
-   );
- }
+      />
+      <BottomTabGeneral.Screen
+        name="Calendar"
+        component={CalendarScreen}
+        options={{
+          title: 'Calendar',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <TabBarIcon name="calendar-alt" color={color} />,
+        }}
+      />
+      <BottomTabGeneral.Screen
+        name="Media"
+        component={MediaScreen}
+        options={{
+          title: 'Media',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <TabBarIcon name="play-circle" color={color} />,
+        }}
+      />
+    </BottomTabGeneral.Navigator>
+  );
+}

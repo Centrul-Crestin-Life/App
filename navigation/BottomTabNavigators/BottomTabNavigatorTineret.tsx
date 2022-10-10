@@ -11,26 +11,26 @@ import { GeneralStackParamList, TineretTabParamList, TineretTabScreenProps } fro
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
- const BottomTabTineret = createBottomTabNavigator<TineretTabParamList>();
+const BottomTabTineret = createBottomTabNavigator<TineretTabParamList>();
 
- export default function BottomTabNavigatorTineret() {
-   const colorScheme = useColorScheme();
+export default function BottomTabNavigatorTineret() {
+  const colorScheme = useColorScheme();
  
-   return (
-     <BottomTabTineret.Navigator
-       initialRouteName="Announcement"
-       screenOptions={{
-         tabBarActiveTintColor: Colors[colorScheme].tint,
-       }}>
-       <BottomTabTineret.Screen
-         name="Announcement"
-         component={AnnouncementScreen}
-         options={{
-          title: 'Announcements',
-          headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="bullhorn" color={color} />,
-        }}
-       />
-     </BottomTabTineret.Navigator>
-   );
- }
+  return (
+    <BottomTabTineret.Navigator
+      initialRouteName="Announcement"
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme].tint,
+      }}>
+      <BottomTabTineret.Screen
+        name="Announcement"
+        component={AnnouncementScreen}
+        options={{
+         title: 'Announcements',
+         headerShown: false,
+         tabBarIcon: ({ color }) => <TabBarIcon name="bullhorn" color={color} />,
+       }}
+      />
+    </BottomTabTineret.Navigator>
+  );
+}
