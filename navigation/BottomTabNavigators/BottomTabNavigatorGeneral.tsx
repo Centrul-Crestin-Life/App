@@ -23,6 +23,10 @@ export default function BottomTabNavigatorGeneral() {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarLabelPosition: 'below-icon',
+        tabBarStyle: {
+          height: 50
+        }
       }}>
       <BottomTabGeneral.Screen
         name="Home"
@@ -31,6 +35,9 @@ export default function BottomTabNavigatorGeneral() {
           title: 'Home',
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="church" color={color} />,
+          tabBarLabelStyle: {
+            fontSize: 13
+          }
         }}
       />
       <BottomTabGeneral.Screen
@@ -40,6 +47,9 @@ export default function BottomTabNavigatorGeneral() {
           title: 'Calendar',
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="calendar-alt" color={color} />,
+          tabBarLabelStyle: {
+            fontSize: 13,
+          }
         }}
       />
       <BottomTabGeneral.Screen
@@ -49,6 +59,9 @@ export default function BottomTabNavigatorGeneral() {
           title: 'Media',
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="play-circle" color={color} />,
+          tabBarLabelStyle: {
+            fontSize: 13
+          }
         }}
       />
     </BottomTabGeneral.Navigator>

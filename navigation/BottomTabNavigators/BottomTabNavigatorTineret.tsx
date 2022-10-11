@@ -21,6 +21,10 @@ export default function BottomTabNavigatorTineret() {
       initialRouteName="Announcement"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarLabelPosition: 'below-icon',
+        tabBarStyle: {
+          height: 50
+        }
       }}>
       <BottomTabTineret.Screen
         name="Announcement"
@@ -29,6 +33,9 @@ export default function BottomTabNavigatorTineret() {
          title: 'Announcements',
          headerShown: false,
          tabBarIcon: ({ color }) => <TabBarIcon name="bullhorn" color={color} />,
+         tabBarLabelStyle: {
+          fontSize: 13
+        }
        }}
       />
     </BottomTabTineret.Navigator>
