@@ -13,8 +13,11 @@ export default function StackNavigatorLogin() {
   const colorScheme = useColorScheme();
  
   return (
-      <StackLogin.Navigator>
-        <StackLogin.Screen name="SignIn" component={SignInScreen} />
+      <StackLogin.Navigator
+      screenOptions={{
+        headerShown: false
+      }}>
+        <StackLogin.Screen name="SignIn" component={SignInScreen}/>
       </StackLogin.Navigator>
   );
 }
