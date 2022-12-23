@@ -46,7 +46,6 @@ export default function MenuDrawer() {
               style={{height: 50, width: 50}}
               resizeMode='cover'
             />,
-            /*height: 55, width: 55, marginLeft: 0, paddingRight: 500 */
         headerTitle: () => (
           <FontAwesome5
             color={Colors[colorScheme].text}
@@ -59,7 +58,7 @@ export default function MenuDrawer() {
       useLegacyImplementation
       drawerContent={(props) => <CustomDrawerContent {...props} /> } >
       
-      <Drawer.Screen name={"Login"} component={StackNavigatorLogin} />  
+      <Drawer.Screen name="LoginPlaceHolder" component={StackNavigatorLogin} />  
       <Drawer.Screen name="Centrul Crestin Life" component={BottomTabNavigatorGeneral} />
       <Drawer.Screen name="Tineret" component={BottomTabNavigatorTineret} />
     </Drawer.Navigator>
