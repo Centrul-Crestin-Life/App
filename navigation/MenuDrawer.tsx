@@ -59,7 +59,7 @@ export default function MenuDrawer() {
       useLegacyImplementation
       drawerContent={(props) => <CustomDrawerContent {...props} /> } >
       
-      <Drawer.Screen name={StackNavigatorLogin.name} component={StackNavigatorLogin} />  
+      <Drawer.Screen name={"Login"} component={StackNavigatorLogin} />  
       <Drawer.Screen name="Centrul Crestin Life" component={BottomTabNavigatorGeneral} />
       <Drawer.Screen name="Tineret" component={BottomTabNavigatorTineret} />
     </Drawer.Navigator>
