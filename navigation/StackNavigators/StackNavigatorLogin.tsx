@@ -5,24 +5,16 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
 import TabBarIcon from '../../hooks/useTabBarIcon';
-import AnnouncementScreen from '../../screens/Tineret/AnnouncementScreen';
+import SignInScreen from '../../screens/SignIn/SignInScreen';
 
 const StackLogin = createNativeStackNavigator();
-
-function LoginScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Login Screen</Text>
-    </View>
-  );
-}
 
 export default function StackNavigatorLogin() {
   const colorScheme = useColorScheme();
  
   return (
       <StackLogin.Navigator>
-        <StackLogin.Screen name="Login" component={LoginScreen} />
+        <StackLogin.Screen name="SignIn" component={SignInScreen} />
       </StackLogin.Navigator>
   );
 }
