@@ -13,8 +13,8 @@ const SignInScreen = () => {
     Logo = LogoLight;
   }
   return (
-    <View style={styles.root}>
-      <Image source={Logo} style={styles.logo} resizeMode="contain"/>
+    <View style={styles.root} >
+      <Image source={Logo} style={styles.logo} resizeMode="cover"/>
     </View>
   )
 }
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 500,
-    height: 400,
+    width: '100%',
+    height: '55%',
   },
 });
 
