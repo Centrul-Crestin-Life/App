@@ -4,11 +4,17 @@ import useColorScheme from '../../hooks/useColorScheme'
 
 const CustomInput = ({value, setValue, placeholder, secureTextEntry}) => {
   var containerStyle;
+  var textInputStyle;
+  var placeholderColor;
 
   if(useColorScheme() == "dark"){
     containerStyle = styles.containerDark;
+    textInputStyle = styles.textInputDark;
+    placeholderColor = '#a3a3a3';
   } else{
     containerStyle = styles.containerLight;
+    textInputStyle = styles.textInputLight;
+    placeholderColor = 'grey';
   }
 
   return (
@@ -16,9 +22,10 @@ const CustomInput = ({value, setValue, placeholder, secureTextEntry}) => {
       <TextInput 
         value={value}
         onChangeText={setValue}
-        placeholder={placeholder} 
+        placeholder={placeholder}
+        placeholderTextColor={placeholderColor}
         secureTextEntry={secureTextEntry}
-        style={styles.input}
+        style={textInputStyle}
       />
     </View>
   )
@@ -49,8 +56,11 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     marginVertical: 5
   },
-  input:{
-    textShadowColor: 'white'
+  textInputDark:{
+    color: 'white'
+  },
+  textInputLight:{
+    color: 'black'
   }
 })
 
