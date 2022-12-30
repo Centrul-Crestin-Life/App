@@ -3,7 +3,7 @@ import LogoLight from '../../assets/images/Logo-CCL-color1.png'
 import React, {useState} from 'react'
 import { View, Text, Image, StyleSheet, ImageSourcePropType} from 'react-native'
 import useColorScheme from '../../hooks/useColorScheme'
-import CustomInput from '../../components/CustomInput/CustomInput'
+import CustomInput from '../../components/LoginScreen/CustomInput'
 
 
 const SignInScreen = () => {
